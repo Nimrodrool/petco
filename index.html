@@ -1,51 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Preference Questionnaire</title>
+    <title>שאלון העדפות כלבים</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body dir="rtl">
     <!-- Question Sections -->
     <div class="question-container" id="question1">
-        <h2>Which size do you prefer?</h2>
+        <h2>איזה גודל אתה מעדיף?</h2>
         <form id="form1">
-            <label><input type="radio" name="size" value="mini"> Mini (sub 10kg)</label>
-            <label><input type="radio" name="size" value="medium"> Medium (10-20kg)</label>
-            <label><input type="radio" name="size" value="large"> Large (20-40kg)</label>
-            <label><input type="radio" name="size" value="huge"> Huge (40kg+)</label>
-            <button type="button" id="next1" disabled>Next</button>
+            <label><input type="radio" name="size" value="mini"> מיני (פחות מ-10 ק"ג)</label>
+            <label><input type="radio" name="size" value="medium"> בינוני (10-20 ק"ג)</label>
+            <label><input type="radio" name="size" value="large"> גדול (20-40 ק"ג)</label>
+            <label><input type="radio" name="size" value="huge"> ענק (מעל 40 ק"ג)</label>
+            <button type="button" id="next1" disabled>הבא</button>
         </form>
     </div>
 
     <div class="question-container" id="question2" style="display: none;">
-        <h2>Do you live in a...</h2>
+        <h2>אתה גר ב...</h2>
         <form id="form2">
-            <label><input type="radio" name="living" value="small-apartment"> Small apartment</label>
-            <label><input type="radio" name="living" value="large-apartment"> Large apartment</label>
-            <label><input type="radio" name="living" value="home-with-yard"> Home with a yard</label>
-            <button type="button" id="next2" disabled>Next</button>
+            <label><input type="radio" name="living" value="small-apartment"> דירה קטנה</label>
+            <label><input type="radio" name="living" value="large-apartment"> דירה גדולה</label>
+            <label><input type="radio" name="living" value="home-with-yard"> בית עם חצר</label>
+            <button type="button" id="next2" disabled>הבא</button>
         </form>
     </div>
 
     <div class="question-container" id="question3" style="display: none;">
-        <h2>Will there be:</h2>
+        <h2>האם יהיו:</h2>
         <form id="form3">
-            <label><input type="checkbox" name="kids"> Kids</label>
-            <label><input type="checkbox" name="cats"> Cats</label>
-            <label><input type="checkbox" name="dogs"> Other dogs</label>
-            <button type="button" id="next3" disabled>Next</button>
+            <label><input type="checkbox" name="kids"> ילדים</label>
+            <label><input type="checkbox" name="cats"> חתולים</label>
+            <label><input type="checkbox" name="dogs"> כלבים נוספים</label>
+            <button type="button" id="next3" disabled>הבא</button>
         </form>
     </div>
 
     <div class="question-container" id="question4" style="display: none;">
-        <h2>How active will your lifestyle be?</h2>
+        <h2>כמה פעילות תהיה באורח החיים שלך?</h2>
         <form id="form4">
-            <label><input type="radio" name="activity" value="very-active"> Very active (hours of daily exercise)</label>
-            <label><input type="radio" name="activity" value="moderately-active"> Moderately active (few times a week)</label>
-            <label><input type="radio" name="activity" value="couch-potato"> Couch potato</label>
-            <button type="button" id="next4" disabled>Next</button>
+            <label><input type="radio" name="activity" value="very-active"> מאוד פעיל (שעות של פעילות יומית)</label>
+            <label><input type="radio" name="activity" value="moderately-active"> פעיל במידה (מספר פעמים בשבוע)</label>
+            <label><input type="radio" name="activity" value="couch-potato"> בטטת כורסה</label>
+            <button type="button" id="next4" disabled>הבא</button>
         </form>
     </div>
 
@@ -53,30 +53,30 @@
     <div class="card-container" id="cardContainer" style="display: none;">
         <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwyXeKDN29AmZgZPLS7n0Bepe8QmVappBwZCeA3XWEbWNdiDFB')">
             <div class="card-info">
-                <h3>Max</h3>
-                <p>Age: 3</p>
-                <p>Max is a playful, energetic dog who loves outdoor adventures.</p>
+                <h3>מקס</h3>
+                <p>גיל: 3</p>
+                <p>מקס הוא כלב אנרגטי שאוהב הרפתקאות בחוץ.</p>
             </div>
         </div>
         <div class="card" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*')">
             <div class="card-info">
-                <h3>Bella</h3>
-                <p>Age: 2</p>
-                <p>Bella is a calm, loving dog who enjoys relaxing at home.</p>
+                <h3>בלה</h3>
+                <p>גיל: 2</p>
+                <p>בלה היא כלבה רגועה שאוהבת להירגע בבית.</p>
             </div>
         </div>
         <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwyXeKDN29AmZgZPLS7n0Bepe8QmVappBwZCeA3XWEbWNdiDFB')">
             <div class="card-info">
-                <h3>Charlie</h3>
-                <p>Age: 5</p>
-                <p>Charlie is a loyal companion who loves to be around people.</p>
+                <h3>צ'רלי</h3>
+                <p>גיל: 5</p>
+                <p>צ'רלי הוא כלב נאמן שאוהב להיות בסביבת אנשים.</p>
             </div>
         </div>
         <div class="card" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*')">
             <div class="card-info">
-                <h3>Luna</h3>
-                <p>Age: 4</p>
-                <p>Luna is an active dog who loves to go on long hikes.</p>
+                <h3>לונה</h3>
+                <p>גיל: 4</p>
+                <p>לונה היא כלבה פעילה שאוהבת לצאת לטיולים ארוכים.</p>
             </div>
         </div>
     </div>
