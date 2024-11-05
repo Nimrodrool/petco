@@ -1,84 +1,83 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const questions = [
-        { form: "form1", next: "next1", container: "question1" },
-        { form: "form2", next: "next2", container: "question2" },
-        { form: "form3", next: "next3", container: "question3" },
-        { form: "form4", next: "next4", container: "question4" }
-    ];
+// Questionnaire Flow
+const questions = document.querySelectorAll(".question-container");
+const nextButtons = document.querySelectorAll("button[id^='next']");
+let currentQuestion = 0;
 
-    questions.forEach((q, i) => {
-        const form = document.getElementById(q.form);
-        const next = document.getElementById(q.next);
-        const currentContainer = document.getElementById(q.container);
-        const nextContainer = questions[i + 1] ? document.getElementById(questions[i + 1].container) : null;
-
-        form.addEventListener("change", () => {
-            next.disabled = false;
-        });
-
-        next.addEventListener("click", () => {
-            currentContainer.style.display = "none";
-            if (nextContainer) {
-                nextContainer.style.display = "block";
-            } else {
-                document.getElementById("cardContainer").style.display = "block";
-                initSwipe();
-            }
-        });
-    });
-
-    function initSwipe() {
-        const cards = Array.from(document.querySelectorAll(".card"));
-        let currentCardIndex = 0;
-
-        cards.forEach((card, index) => {
-            card.style.zIndex = cards.length - index;
-            card.addEventListener("pointerdown", startDrag);
-        });
-
-        function startDrag(event) {
-            const card = event.target.closest(".card");
-            let startX = event.clientX;
-            let isDragging = false;
-
-            function onPointerMove(event) {
-                isDragging = true;
-                const dx = event.clientX - startX;
-                card.style.transform = `translateX(${dx}px) rotate(${dx * 0.1}deg)`;
-            }
-
-            function onPointerUp(event) {
-                if (!isDragging) return;
-                document.removeEventListener("pointermove", onPointerMove);
-                document.removeEventListener("pointerup", onPointerUp);
-
-                const dx = event.clientX - startX;
-                if (Math.abs(dx) > 100) {
-                    const direction = dx > 0 ? "right" : "left";
-                    card.style.transition = "transform 0.3s";
-                    card.style.transform = `translateX(${direction === "right" ? 300 : -300}px) rotate(${direction === "right" ? 20 : -20}deg)`;
-                    setTimeout(() => {
-                        card.style.display = "none";
-                        showNextCard();
-                    }, 300);
-                } else {
-                    card.style.transition = "transform 0.3s";
-                    card.style.transform = "translateX(0) rotate(0)";
-                }
-                isDragging = false;
-            }
-
-            document.addEventListener("pointermove", onPointerMove);
-            document.addEventListener("pointerup", onPointerUp);
-        }
-
-        function showNextCard() {
-            currentCardIndex++;
-            if (currentCardIndex < cards.length) {
-                cards[currentCardIndex].style.zIndex = cards.length - currentCardIndex;
-            } else {
-                alert("Thank you for your choices!");
-            }
-        }
+function showNextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        questions[currentQuestion].style.display = "none";
+        currentQuestion++;
+        questions[currentQuestion].style.display = "block";
+    } else {
+        // After the last question, show the card container
+        questions[currentQuestion].style.display = "none";
+        document.getElementById("cardContainer").style.display = "flex";
     }
+}
+
+// Activate Next button when an answer is selected
+nextButtons.forEach((button, index) => {
+    const form = button.parentElement;
+    form.addEventListener("change", () => {
+        if (index === 2) {
+            // Allow multiple choices for the third question (checkboxes)
+            button.disabled = !Array.from(form.elements).some(input => input.checked);
+        } else {
+            // For other questions, only allow single choice (radio)
+            button.disabled = !Array.from(form.elements).some(input => input.checked && input.type === "radio");
+        }
+    });
+    button.addEventListener("click", showNextQuestion);
+});
+
+// Tinder-style Swipe Functionality
+const cardContainer = document.getElementById("cardContainer");
+let isDragging = false;
+let startX, currentX;
+
+function startDrag(event) {
+    isDragging = true;
+    startX = event.type === "touchstart" ? event.touches[0].clientX : event.clientX;
+}
+
+function drag(event) {
+    if (!isDragging) return;
+    currentX = event.type === "touchmove" ? event.touches[0].clientX : event.clientX;
+    const card = event.target.closest(".card");
+    const moveX = currentX - startX;
+    card.style.transform = `translateX(${moveX}px) rotate(${moveX * 0.1}deg)`;
+}
+
+function endDrag(event) {
+    if (!isDragging) return;
+    isDragging = false;
+    const card = event.target.closest(".card");
+    const moveX = currentX - startX;
+    const swipeThreshold = 100; // Reduced swipe threshold for easier swiping
+
+    if (moveX > swipeThreshold) {
+        // Swiped right (like)
+        card.classList.add("liked");
+        setTimeout(() => {
+            card.style.display = "none";
+            alert("It's a match!");
+        }, 300);
+    } else if (moveX < -swipeThreshold) {
+        // Swiped left (dislike)
+        card.classList.add("disliked");
+        setTimeout(() => card.style.display = "none", 300);
+    } else {
+        // Not enough movement, reset position
+        card.style.transform = "";
+    }
+}
+
+cardContainer.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mousedown", startDrag);
+    card.addEventListener("mousemove", drag);
+    card.addEventListener("mouseup", endDrag);
+    card.addEventListener("mouseleave", endDrag);
+    card.addEventListener("touchstart", startDrag);
+    card.addEventListener("touchmove", drag);
+    card.addEventListener("touchend", endDrag);
 });
