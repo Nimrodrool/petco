@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Preference Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Question Sections -->
+    <div class="question-container" id="question1">
+        <h2>Which size do you prefer?</h2>
+        <form id="form1">
+            <label><input type="radio" name="size" value="mini"> Mini (sub 10kg)</label>
+            <label><input type="radio" name="size" value="medium"> Medium (10-20kg)</label>
+            <label><input type="radio" name="size" value="large"> Large (20-40kg)</label>
+            <label><input type="radio" name="size" value="huge"> Huge (40kg+)</label>
+            <button type="button" id="next1" disabled>Next</button>
+        </form>
+    </div>
+
+    <div class="question-container" id="question2" style="display: none;">
+        <h2>Do you live in a...</h2>
+        <form id="form2">
+            <label><input type="radio" name="living" value="small-apartment"> Small apartment</label>
+            <label><input type="radio" name="living" value="large-apartment"> Large apartment</label>
+            <label><input type="radio" name="living" value="home-with-yard"> Home with a yard</label>
+            <button type="button" id="next2" disabled>Next</button>
+        </form>
+    </div>
+
+    <div class="question-container" id="question3" style="display: none;">
+        <h2>Will there be:</h2>
+        <form id="form3">
+            <label><input type="checkbox" name="kids"> Kids</label>
+            <label><input type="checkbox" name="cats"> Cats</label>
+            <label><input type="checkbox" name="dogs"> Other dogs</label>
+            <button type="button" id="next3" disabled>Next</button>
+        </form>
+    </div>
+
+    <div class="question-container" id="question4" style="display: none;">
+        <h2>How active will your lifestyle be?</h2>
+        <form id="form4">
+            <label><input type="radio" name="activity" value="very-active"> Very active (hours of daily exercise)</label>
+            <label><input type="radio" name="activity" value="moderately-active"> Moderately active (few times a week)</label>
+            <label><input type="radio" name="activity" value="couch-potato"> Couch potato</label>
+            <button type="button" id="next4" disabled>Next</button>
+        </form>
+    </div>
+
+    <!-- Dog Cards Section -->
+    <div class="card-container" id="cardContainer" style="display: none;">
+        <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwyXeKDN29AmZgZPLS7n0Bepe8QmVappBwZCeA3XWEbWNdiDFB')">
+            <div class="card-info">
+                <h3>Max</h3>
+                <p>Age: 3</p>
+                <p>Max is a playful, energetic dog who loves outdoor adventures.</p>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*')">
+            <div class="card-info">
+                <h3>Bella</h3>
+                <p>Age: 2</p>
+                <p>Bella is a calm, loving dog who enjoys relaxing at home.</p>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwyXeKDN29AmZgZPLS7n0Bepe8QmVappBwZCeA3XWEbWNdiDFB')">
+            <div class="card-info">
+                <h3>Charlie</h3>
+                <p>Age: 5</p>
+                <p>Charlie is a loyal companion who loves to be around people.</p>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*')">
+            <div class="card-info">
+                <h3>Luna</h3>
+                <p>Age: 4</p>
+                <p>Luna is an active dog who loves to go on long hikes.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
