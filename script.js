@@ -60,7 +60,7 @@ function endDrag(event) {
         card.classList.add("liked");
         setTimeout(() => {
             card.style.display = "none";
-            alert("It's a match!");
+            alert("יש התאמה! לכל הפרטים פנו לעמותה במס׳ הבא");
         }, 300);
     } else if (moveX < -swipeThreshold) {
         // Swiped left (dislike)
